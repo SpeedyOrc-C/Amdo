@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="tibetan misans-tibetan">
+    <div class="tibetan">
         <div class="with-vowel">
             {tibetan}
         </div>
@@ -55,8 +55,11 @@
         position: relative;
 
         text-align: center;
+
+        font-family: "MiSans Tibetan VF", sans-serif;
         font-size: 2rem;
-        font-weight: 300;
+        font-weight: 250;
+        color: #333;
 
         & .zero-consonant-mask {
             position: absolute;

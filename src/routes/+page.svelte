@@ -1,195 +1,115 @@
 <script lang="ts">
-    import LetterBox from "./LetterBox.svelte";
+    import LetterTable from "./LetterTable.svelte";
+    import {letter} from "./Letter";
 
-    class Letter
-    {
-        tibetan: string
-        amdo: string
-        wylie: string
-
-        constructor(tibetan: string, amdo: string, wylie: string)
-        {
-            this.tibetan = tibetan
-            this.amdo = amdo
-            this.wylie = wylie
-        }
-    }
-
-    const alphabet = [[
-        new Letter("ཀ", "k", "k"),
-        new Letter("ཁ", "kʰ", "kh"),
-        new Letter("ག", "k", "g"),
-        new Letter("ང", "ŋ", "ng"),
-    ], [
-        new Letter("ཅ", "tɕ", "c"),
-        new Letter("ཆ", "tɕʰ", "ch"),
-        new Letter("ཇ", "tɕ", "j"),
-        new Letter("ཉ", "ɲ", "ny"),
-    ], [
-        new Letter("ཏ", "t", "t"),
-        new Letter("ཐ", "tʰ", "th"),
-        new Letter("ད", "d", "d"),
-        new Letter("ན", "n", "n"),
-    ], [
-        new Letter("པ", "p", "p"),
-        new Letter("ཕ", "pʰ", "ph"),
-        new Letter("བ", "w", "b"),
-        new Letter("མ", "m", "m"),
-    ], [
-        new Letter("ཙ", "ts", "ts"),
-        new Letter("ཚ", "tsʰ", "tsh"),
-        new Letter("ཛ", "ts", "dz"),
-        new Letter("ཝ", "ʁʷ", "w"),
-    ], [
-        new Letter("ཞ", "ɕ", "zh"),
-        new Letter("ཟ", "xs", "z"),
-        new Letter("འ", "", "’"),
-        new Letter("ཡ", "j", "y"),
-    ], [
-        new Letter("ར", "ɻ", "r"),
-        new Letter("ལ", "l", "l"),
-        new Letter("ཤ", "x", "sh"),
-        new Letter("ས", "s", "s"),
-    ], [
-        new Letter("ཧ", "h", "h"),
-        new Letter("ཨ", "", ""),
-    ]]
-
-    const vowels = [
-        new Letter("ཨི", "ə", "i"),
-        new Letter("ཨུ", "ə", "u"),
-        new Letter("ཨེ", "e", "e"),
-        new Letter("ཨོ", "o", "o"),
+    const Consonants = [
+        [letter("ཀ", "k", "k"), letter("ཁ", "kʰ", "kh"), letter("ག", "k", "g"), letter("ང", "ŋ", "ng")],
+        [letter("ཅ", "tɕ", "c"), letter("ཆ", "tɕʰ", "ch"), letter("ཇ", "tɕ", "j"), letter("ཉ", "ɲ", "ny")],
+        [letter("ཏ", "t", "t"), letter("ཐ", "tʰ", "th"), letter("ད", "d", "d"), letter("ན", "n", "n")],
+        [letter("པ", "p", "p"), letter("ཕ", "pʰ", "ph"), letter("བ", "w", "b"), letter("མ", "m", "m")],
+        [letter("ཙ", "ts", "ts"), letter("ཚ", "tsʰ", "tsh"), letter("ཛ", "ts", "dz"), letter("ཝ", "ʁʷ", "w")],
+        [letter("ཞ", "ɕ", "zh"), letter("ཟ", "xs", "z"), letter("འ", "", "’"), letter("ཡ", "j", "y")],
+        [letter("ར", "ɻ", "r"), letter("ལ", "l", "l"), letter("ཤ", "x", "sh"), letter("ས", "s", "s")],
+        [letter("ཧ", "h", "h"), letter("ཨ", "", "")],
     ]
 
-    const subjoinedYa = [[
-        new Letter("ཀྱ", "tɕ", "ky"),
-        new Letter("ཁྱ", "tɕʰ", "khy"),
-        new Letter("གྱ", "tɕ", "gy"),
-    ], [
-        new Letter("པྱ", "ɕ", "py"),
-        new Letter("ཕྱ", "ɕ", "phy"),
-        new Letter("བྱ", "ɕ", "by"),
-    ], [
-        new Letter("མྱ", "ɲ", "my"),
+    const Vowels = [[
+        letter("ཨ", "a", "a"),
+        letter("ཨི", "ə", "i"), letter("ཨུ", "ə", "u"), letter("ཨེ", "e", "e"), letter("ཨོ", "o", "o"),
     ]]
 
-    const subjoinedRa = [[
-        new Letter("ཀྲ གྲ ཏྲ དྲ པྲ བྲ", "ʈɻ", "kr gr tr dr pr br"),
-        new Letter("ཁྲ ཐྲ ཕྲ", "ʈɻʰ", "khr thr phr"),
-    ], [
-        new Letter("མྲ", "m", "mr"),
-        new Letter("སྲ ཧྲ", "ʂ", "sr hr"),
-    ]]
+    const SubjoinedYa = [
+        [letter("ཀྱ", "tɕ", "ky"), letter("ཁྱ", "tɕʰ", "khy"), letter("གྱ", "tɕ", "gy")],
+        [letter("པྱ", "ɕ", "py"), letter("ཕྱ", "ɕ", "phy"), letter("བྱ", "ɕ", "by")],
+        [letter("མྱ", "ɲ", "my")],
+    ]
+
+    const SubjoinedRa = [
+        [letter("ཀྲ གྲ ཏྲ དྲ པྲ བྲ", "ʈɻ", "kr gr tr dr pr br"), letter("ཁྲ ཐྲ ཕྲ", "ʈɻʰ", "khr thr phr")],
+        [letter("མྲ", "m", "mr"), letter("སྲ ཧྲ", "ʂ", "sr hr")]
+    ]
+
+    const SubjoinedLa = [
+        [letter("ཀླ གླ བླ སླ", "l", "kl gl bl sl"), letter("ཟླ", "d", "zl"), letter("སླ", "ɬ", "sl")]
+    ]
+
+    const SubjoinedWa = [
+        [letter("ཀྭ ཁྭ གྭ ཉྭ དྭ ཚྭ", "略", "kw khw gw nyw dw tshw")],
+        [letter("ཞྭ ཟྭ སྭ ལྭ ཤྭ སྭ ཧྭ", "略", "zhw zw rw lw shw sw hw")],
+    ]
 </script>
 
 <svelte:head>
-    <title>藏文字母表（安多话）</title>
+    <title>安多藏语拼读</title>
 </svelte:head>
 
-<table id="consonants" style:--rows="4">
-    <caption>辅音字母</caption>
+<h1>安多藏语拼读</h1>
 
-    <tbody>
-    {#each alphabet as row}
-        <tr>
-            {#each row as letter}
-                <td>
-                    <LetterBox amdo={letter.amdo} wylie={letter.wylie} tibetan={letter.tibetan}/>
-                </td>
-            {/each}
-        </tr>
-    {/each}
-    </tbody>
-</table>
+<p>藏文 <ruby>བོད་<rt>bod</rt>ཡིག་<rt>yig</rt></ruby> 是用来书写藏语 <ruby>བོད་<rt>bod</rt>སྐད་<rt>skad</rt></ruby> 的文字。</p>
+<p>藏语有三大方言，分别是:</p>
 
-<table id="vowels" style:--rows="5">
-    <caption>元音字母</caption>
+<ul>
+    <li>卫藏话 <ruby>དབུས་<rt>dbus</rt>སྐད་<rt> skad</rt></ruby></li>
+    <li>康巴话 <ruby>ཁམས་<rt>khams</rt>སྐད་<rt>skad</rt></ruby></li>
+    <li>安多话 <ruby>ཨ་<rt>a</rt>མདོ་<rt>mdo</rt>སྐད་<rt>skad</rt></ruby></li>
+</ul>
 
-    <tbody>
-    <tr>
-        <td>
-            <LetterBox amdo="a" wylie="a" tibetan="ཨ" />
-        </td>
-        {#each vowels as vowel}
-            <td>
-                <LetterBox amdo={vowel.amdo} wylie={vowel.wylie} tibetan={vowel.tibetan} mask="ཨ" />
-            </td>
-        {/each}
-    </tr>
-    </tbody>
-</table>
+<p>
+    这三个方言中只有安多话是没有声调的，而卫藏话和康巴话都有声调。
+    安多话保留了古藏语的更多辅音，而另外两个方言缺失的这些辅音演变成了声调。
+</p>
 
-<table id="subjoined-ya" style:--rows="3">
-    <caption>
-        下加字
-        <span class="misans-tibetan">ཡ</span>
-        ( <span class="misans-tibetan">ྱ</span> )
-    </caption>
+<p>
+    当辅音字母单独出现的时候，默认会跟上一个元音 [a]。
+    所以下表中的第一个字母读作 [ka] ，第二个字母读作 [kʰa] 。
+</p>
 
-    <tbody>
-    {#each subjoinedYa as row}
-        <tr>
-            {#each row as letter}
-                <td >
-                    <LetterBox amdo={letter.amdo} wylie={letter.wylie} tibetan={letter.tibetan} />
-                </td>
-            {/each}
-        </tr>
-    {/each}
-    </tbody>
-</table>
+<LetterTable rows={Consonants}>
+    辅音字母
+</LetterTable>
 
-<table id="vowels" style:--rows="2">
-    <caption>
-        下加字
-        <span class="misans-tibetan">ར</span>
-        ( <span class="misans-tibetan">ྲ</span> )
-    </caption>
+<LetterTable rows={Vowels}>
+    元音字母
+</LetterTable>
 
-    <tbody>
-    {#each subjoinedRa as row}
-        <tr>
-            {#each row as letter}
-                <td>
-                    <LetterBox amdo={letter.amdo} wylie={letter.wylie} tibetan={letter.tibetan} />
-                </td>
-            {/each}
-        </tr>
-    {/each}
-    </tbody>
-</table>
+<LetterTable rows={SubjoinedYa}>
+    下加字 <span class="mi-ti">ཡ</span> ( <span class="mi-ti">ྱ</span> )
+</LetterTable>
+
+<LetterTable rows={SubjoinedRa}>
+    下加字 <span class="mi-ti">ར</span> ( <span class="mi-ti">ྲ</span> )
+</LetterTable>
+
+<LetterTable rows={SubjoinedLa}>
+    下加字 <span class="mi-ti">ལ</span>
+</LetterTable>
+
+<LetterTable rows={SubjoinedWa}>
+    下加字 <span class="mi-ti">ཝ</span> ( <span class="mi-ti">ྭ</span> )
+</LetterTable>
 
 <br><br><br>
 
 <style lang="scss">
-    div {
+    h1, p, li {
+        font-family: -apple-system, sans-serif;
         color: #333;
     }
 
-    table {
-        width: 100%;
-        max-width: 30rem;
-        margin: 0 auto;
+    ruby {
+        font-family: "MiSans Tibetan VF", sans-serif;
+    }
 
-        border-collapse: collapse;
+    rt {
         font-family: -apple-system, sans-serif;
-
-        & td {
-            width: calc(100% / var(--rows))
-        }
+        color: #555;
     }
 
-    caption {
-        padding: 0.5rem 0;
-        font-size: 1.5rem;
+    h1, h2, h3 {
+        text-align: center;
     }
 
-    td {
-        border: 1px solid lightgray;
-    }
+    p {
 
-    #vowels {
-        page-break-after: auto;
     }
 </style>
