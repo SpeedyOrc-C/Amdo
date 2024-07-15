@@ -46,6 +46,7 @@
 <h1>安多藏语拼读</h1>
 
 <p>藏文 <ruby>བོད་<rt>bod</rt>ཡིག་<rt>yig</rt></ruby> 是用来书写藏语 <ruby>བོད་<rt>bod</rt>སྐད་<rt>skad</rt></ruby> 的文字。</p>
+
 <p>藏语有三大方言，分别是:</p>
 
 <ul>
@@ -54,38 +55,38 @@
     <li>安多话 <ruby>ཨ་<rt>a</rt>མདོ་<rt>mdo</rt>སྐད་<rt>skad</rt></ruby></li>
 </ul>
 
-<p>
-    这三个方言中只有安多话是没有声调的，而卫藏话和康巴话都有声调。
-    安多话保留了古藏语的更多辅音，而另外两个方言缺失的这些辅音演变成了声调。
-</p>
+<p>这三个方言中只有安多话是没有声调的，而卫藏话和康巴话都有声调。安多话保留了古藏语的更多辅音，而另外两个方言缺失的这些辅音演变成了声调。</p>
 
-<p>
-    当辅音字母单独出现的时候，默认会跟上一个元音 [a]。
-    所以下表中的第一个字母读作 [ka] ，第二个字母读作 [kʰa] 。
-</p>
+<p>本网站所使用的记号如下：国际音标写在方括号 [] 里头，威利转写写在尖括号 &lt;&gt; 里头。为什么不用汉语拼音呢？那是因为，安多话里面的一些音在普通话里没有。</p>
+
+<p>当辅音字母单独出现的时候，默认附带一个元音 [a]。所以下表中的第一个字母读作 [ka]，第二个字母读作 [kʰa]。</p>
 
 <LetterTable rows={Consonants}>
     辅音字母
 </LetterTable>
+
+<p>藏文的元音比较特别，/i/ /e/ /o/ 写在辅音字母的上面，/u/ 写在下面，而 /a/ 则如之前所说，不写出来。</p>
+
+<p>另外还得特别注意 /i/ 和 /u/ 的发音，在只有单一一个辅音时都读作 [ə]。</p>
 
 <LetterTable rows={Vowels}>
     元音字母
 </LetterTable>
 
 <LetterTable rows={SubjoinedYa}>
-    下加字 <span class="mi-ti">ཡ</span> ( <span class="mi-ti">ྱ</span> )
+    下加字 <ruby>ཡ</ruby> ( <ruby>ྱ</ruby> )
 </LetterTable>
 
 <LetterTable rows={SubjoinedRa}>
-    下加字 <span class="mi-ti">ར</span> ( <span class="mi-ti">ྲ</span> )
+    下加字 <ruby>ར</ruby> ( <ruby>ྲ</ruby> )
 </LetterTable>
 
 <LetterTable rows={SubjoinedLa}>
-    下加字 <span class="mi-ti">ལ</span>
+    下加字 <ruby>ལ</ruby>
 </LetterTable>
 
 <LetterTable rows={SubjoinedWa}>
-    下加字 <span class="mi-ti">ཝ</span> ( <span class="mi-ti">ྭ</span> )
+    下加字 <ruby>ཝ</ruby> ( <ruby>ྭ</ruby> )
 </LetterTable>
 
 <br><br><br>
@@ -107,9 +108,5 @@
 
     h1, h2, h3 {
         text-align: center;
-    }
-
-    p {
-
     }
 </style>

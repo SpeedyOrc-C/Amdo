@@ -11,7 +11,7 @@
             [{amdo}]
         </div>
         <div class="wylie">
-            /{wylie}/
+            &lt;{wylie}&gt;
         </div>
     </div>
 
